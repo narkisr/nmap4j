@@ -1,0 +1,765 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="file:///usr/local/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 5.30BETA1 scan initiated Fri Aug 27 21:56:39 2010 as: nmap -sV -O -oX scan-08272010-2140.xml -T3 -p 22,80,389,995,135,458,625,626,666,953,1433 -iR 100 -->
+<nmaprun scanner="nmap" args="nmap -sV -O -oX scan-08272010-2140.xml -T3 -p 22,80,389,995,135,458,625,626,666,953,1433 -iR 100" start="1282967799" startstr="Fri Aug 27 21:56:39 2010" version="5.30BETA1" xmloutputversion="1.03">
+	<scaninfo type="syn" protocol="tcp" numservices="11" services="22,80,135,389,458,625-626,666,953,995,1433"/>
+	<verbose level="0"/>
+	<debugging level="0"/>
+	<host starttime="1282967799" endtime="1282968277">
+		<status state="up" reason="echo-reply"/>
+		<address addr="161.58.65.151" addrtype="ipv4"/>
+		<hostnames>
+			<hostname name="www.mydotcomster.com" type="PTR"/>
+		</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="open" reason="syn-ack" reason_ttl="117"/>
+				<service name="http" product="Microsoft IIS httpd" method="probed" conf="10"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="closed" reason="reset" reason_ttl="117"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os>
+			<portused state="open" proto="tcp" portid="80"/>
+			<portused state="closed" proto="tcp" portid="1433"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2003" accuracy="91"/>
+			<osclass type="WAP" vendor="Apple" osfamily="embedded" accuracy="88"/>
+			<osmatch name="Microsoft Windows Server 2003 SP1 or SP2" accuracy="91" line="27690"/>
+			<osmatch name="Microsoft Windows Server 2003 SP1" accuracy="91" line="27372"/>
+			<osmatch name="Microsoft Windows Server 2003 SP2" accuracy="90" line="27724"/>
+			<osmatch name="Apple AirPort Extreme WAP v7.3.2" accuracy="88" line="2009"/>
+		</os>
+		<tcpsequence index="256" difficulty="Good luck!" values="27ED22D2,FEFDE59E,50E9A407,34805FC,EAE03EAA,20F453C3"/>
+		<ipidsequence class="Busy server or unknown class" values="5593,5598,559E,55A4,55A5,55BB"/>
+		<tcptssequence class="zero timestamp" values="0,0,0,0,0,0"/>
+		<times srtt="87444" rttvar="32142" to="216012"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968277">
+		<status state="up" reason="echo-reply"/>
+		<address addr="70.80.197.143" addrtype="ipv4"/>
+		<hostnames>
+			<hostname name="modemcable143.197-80-70.mc.videotron.ca" type="PTR"/>
+		</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="245" reason_ip="24.200.225.110"/>
+				<service name="http" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os/>
+		<times srtt="104917" rttvar="75722" to="407805"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968276">
+		<status state="up" reason="reset"/>
+		<address addr="85.71.84.134" addrtype="ipv4"/>
+		<hostnames>
+			<hostname name="134.84.broadband4.iol.cz" type="PTR"/>
+		</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="http" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="closed" reason="reset" reason_ttl="241"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os>
+			<portused state="closed" proto="tcp" portid="22"/>
+			<portused state="closed" proto="udp" portid="32265"/>
+			<osclass type="switch" vendor="HP" osfamily="embedded" accuracy="100"/>
+			<osclass type="broadband router" vendor="Netopia" osfamily="embedded" accuracy="100"/>
+			<osclass type="firewall" vendor="Teltronics" osfamily="embedded" accuracy="100"/>
+			<osmatch name="HP ProLiant BL p-Class C-Gbe2 switch" accuracy="100" line="14497"/>
+			<osmatch name="Netopia 3366-ENT ADSL router" accuracy="100" line="34099"/>
+			<osmatch name="Teltronics NET-PATH intrusion detection system" accuracy="100" line="40526"/>
+		</os>
+		<distance value="14"/>
+		<times srtt="211032" rttvar="50496" to="413016"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968277">
+		<status state="up" reason="reset"/>
+		<address addr="205.231.102.231" addrtype="ipv4"/>
+		<hostnames>
+			<hostname name="sw2-ext-eqix.dr.shaw.net" type="PTR"/>
+		</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="http" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="closed" reason="reset" reason_ttl="247"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os>
+			<portused state="closed" proto="tcp" portid="22"/>
+			<osclass type="WAP" vendor="Linksys" osfamily="embedded" accuracy="95"/>
+			<osclass type="firewall" vendor="WatchGuard" osfamily="embedded" accuracy="95"/>
+			<osclass type="general purpose" vendor="Cobalt" osfamily="Linux" osgen="2.0.X" accuracy="94"/>
+			<osclass type="switch" vendor="HP" osfamily="embedded" accuracy="94"/>
+			<osclass type="media device" vendor="Netgear" osfamily="embedded" accuracy="94"/>
+			<osclass type="broadband router" vendor="Netopia" osfamily="embedded" accuracy="94"/>
+			<osclass type="firewall" vendor="Teltronics" osfamily="embedded" accuracy="94"/>
+			<osclass type="firewall" vendor="ZyXEL" osfamily="ZyNOS" osgen="3.X" accuracy="94"/>
+			<osclass type="broadband router" vendor="ZyXEL" osfamily="ZyNOS" accuracy="94"/>
+			<osclass type="firewall" vendor="ZyXEL" osfamily="ZyNOS" accuracy="94"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="XP" accuracy="92"/>
+			<osclass type="firewall" vendor="NetworksAOK" osfamily="embedded" accuracy="92"/>
+			<osclass type="firewall" vendor="Nokia" osfamily="IPSO" osgen="4.X" accuracy="92"/>
+			<osclass type="VoIP adapter" vendor="Avaya" osfamily="embedded" accuracy="92"/>
+			<osclass type="firewall" vendor="Fortinet" osfamily="embedded" accuracy="92"/>
+			<osclass type="printer" vendor="HP" osfamily="embedded" accuracy="92"/>
+			<osclass type="general purpose" vendor="HP" osfamily="OpenVMS" osgen="7.X" accuracy="92"/>
+			<osclass type="firewall" vendor="ISS" osfamily="Linux" osgen="2.4.X" accuracy="92"/>
+			<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="2.6.X" accuracy="92"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2000" accuracy="92"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2003" accuracy="92"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="98" accuracy="92"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="Vista" accuracy="92"/>
+			<osclass type="firewall" vendor="Netasq" osfamily="embedded" accuracy="92"/>
+			<osclass type="WAP" vendor="Orange" osfamily="embedded" accuracy="92"/>
+			<osclass type="broadband router" vendor="Sagem Communication" osfamily="embedded" accuracy="92"/>
+			<osclass type="firewall" vendor="3Com" osfamily="embedded" accuracy="91"/>
+			<osmatch name="Linksys WRT54G v8 wireless broadband router" accuracy="95" line="18715"/>
+			<osmatch name="WatchGuard FireBox 500 firewall" accuracy="95" line="41202"/>
+			<osmatch name="WatchGuard FireBox 700 or X700 firewall" accuracy="95" line="41220"/>
+			<osmatch name="Cobalt Qube 1 2700WG (Linux 2.0.34)" accuracy="94" line="7866"/>
+			<osmatch name="HP ProLiant BL p-Class C-Gbe2 switch" accuracy="94" line="14497"/>
+			<osmatch name="Netgear EVA700 Digital Entertainer set top box" accuracy="94" line="33839"/>
+			<osmatch name="Netopia 3366-ENT ADSL router" accuracy="94" line="34099"/>
+			<osmatch name="Teltronics NET-PATH intrusion detection system" accuracy="94" line="40526"/>
+			<osmatch name="ZyXEL ZyWALL 10W firewall (ZyNOS 3.62)" accuracy="94" line="41858"/>
+			<osmatch name="ZyXEL ZyWALL 2 or Prestige 660HW-61 ADSL router (ZyNOS 3.62)" accuracy="94" line="41876"/>
+		</os>
+		<times srtt="93022" rttvar="28246" to="206006"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968276">
+		<status state="up" reason="echo-reply"/>
+		<address addr="117.83.151.231" addrtype="ipv4"/>
+		<hostnames>
+</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="http" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="closed" reason="reset" reason_ttl="51"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os>
+			<portused state="closed" proto="tcp" portid="22"/>
+			<portused state="closed" proto="udp" portid="33170"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="XP" accuracy="100"/>
+			<osmatch name="Microsoft Windows XP SP2" accuracy="100" line="30605"/>
+		</os>
+		<distance value="13"/>
+		<times srtt="248496" rttvar="50317" to="449764"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968278">
+		<status state="up" reason="echo-reply"/>
+		<address addr="89.238.70.167" addrtype="ipv4"/>
+		<hostnames>
+</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="open" reason="syn-ack" reason_ttl="52"/>
+				<service name="tcpwrapped" method="table" conf="8"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="open" reason="syn-ack" reason_ttl="52"/>
+				<service name="http" product="Apache httpd" version="1.3.33" extrainfo="(Debian GNU/Linux) PHP/4.3.10-22" method="probed" conf="10"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="closed" reason="reset" reason_ttl="52"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os>
+			<portused state="open" proto="tcp" portid="22"/>
+			<portused state="closed" proto="tcp" portid="135"/>
+			<portused state="closed" proto="udp" portid="30799"/>
+			<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="2.6.X" accuracy="94"/>
+			<osclass type="WAP" vendor="AVM" osfamily="embedded" accuracy="90"/>
+			<osclass type="specialized" vendor="Linux" osfamily="Linux" osgen="2.4.X" accuracy="90"/>
+			<osclass type="proxy server" vendor="Riverbed" osfamily="embedded" accuracy="90"/>
+			<osclass type="VoIP phone" vendor="Thomson" osfamily="embedded" accuracy="90"/>
+			<osclass type="storage-misc" vendor="D-Link" osfamily="embedded" accuracy="89"/>
+			<osclass type="WAP" vendor="Linksys" osfamily="embedded" accuracy="89"/>
+			<osclass type="remote management" vendor="Dell" osfamily="embedded" accuracy="89"/>
+			<osclass type="specialized" vendor="Google" osfamily="embedded" accuracy="89"/>
+			<osclass type="switch" vendor="HP" osfamily="embedded" accuracy="89"/>
+			<osclass type="general purpose" vendor="Linksys" osfamily="Linux" osgen="2.4.X" accuracy="89"/>
+			<osclass type="general purpose" vendor="MontaVista" osfamily="Linux" osgen="2.4.X" accuracy="89"/>
+			<osclass type="WAP" vendor="Netgear" osfamily="embedded" accuracy="89"/>
+			<osclass type="broadband router" vendor="Linksys" osfamily="embedded" accuracy="88"/>
+			<osclass type="print server" vendor="HP" osfamily="embedded" accuracy="88"/>
+			<osclass type="WAP" vendor="Acorp" osfamily="embedded" accuracy="88"/>
+			<osclass type="storage-misc" vendor="Buffalo" osfamily="embedded" accuracy="87"/>
+			<osclass type="remote management" vendor="HP" osfamily="embedded" accuracy="87"/>
+			<osclass type="firewall" vendor="IPCop" osfamily="Linux" osgen="2.4.X" accuracy="87"/>
+			<osclass type="WAP" vendor="Linux" osfamily="Linux" osgen="2.4.X" accuracy="86"/>
+			<osmatch name="Linux 2.6.15 (Ubuntu)" accuracy="94" line="20314"/>
+			<osmatch name="Linux 2.6.15 - 2.6.26" accuracy="94" line="20394"/>
+			<osmatch name="Linux 2.6.18 - 2.6.28" accuracy="91" line="21590"/>
+			<osmatch name="AVM FRITZ!Box FON WLAN 7170 WAP" accuracy="90" line="3887"/>
+			<osmatch name="Linux 2.4.21 (embedded)" accuracy="90" line="19626"/>
+			<osmatch name="Linux 2.6.20 (Ubuntu 7.04 server, x86)" accuracy="90" line="21919"/>
+			<osmatch name="Linux 2.6.24" accuracy="90" line="23501"/>
+			<osmatch name="Linux 2.6.24 (Ubuntu 8.04, x86)" accuracy="90" line="23620"/>
+			<osmatch name="Linux 2.6.9 - 2.6.27" accuracy="90" line="25236"/>
+			<osmatch name="Riverbed Steelhead 200 proxy server" accuracy="90" line="37160"/>
+		</os>
+		<uptime seconds="7721723" lastboot="Sun May 30 13:09:45 2010"/>
+		<distance value="14"/>
+		<tcpsequence index="207" difficulty="Good luck!" values="A82DD078,A9031E2D,A8FCD283,A86973DB,A8585F15,A8658BBA"/>
+		<ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
+		<tcptssequence class="other" values="72235033,7223504C,72235066,7223507F,72235098,722350B1"/>
+		<times srtt="175057" rttvar="60175" to="415757"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968308">
+		<status state="up" reason="echo-reply"/>
+		<address addr="128.105.84.50" addrtype="ipv4"/>
+		<hostnames>
+</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="open" reason="syn-ack" reason_ttl="51"/>
+				<service name="ssh" product="OpenSSH" version="4.3" extrainfo="protocol 2.0" method="probed" conf="10"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="open" reason="syn-ack" reason_ttl="51"/>
+				<service name="http" product="Apache httpd" method="probed" conf="10"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="open" reason="syn-ack" reason_ttl="51"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="open" reason="syn-ack" reason_ttl="51"/>
+				<service name="ms-sql-s" product="Microsoft SQL Server 2000" version="8.00.311; RTMa" ostype="Windows" method="probed" conf="10"/>
+			</port>
+		</ports>
+		<os>
+			<portused state="open" proto="tcp" portid="22"/>
+			<osclass type="switch" vendor="HP" osfamily="embedded" accuracy="89"/>
+			<osmatch name="HP ProCurve 4000M switch (J4121A)" accuracy="89" line="14415"/>
+		</os>
+		<tcpsequence index="32" difficulty="Good luck!" values="270C04C5,2710E6C5,2711E0C5,2713D4C5,2714CEC5,2715C8C5"/>
+		<ipidsequence class="Busy server or unknown class" values="8AE1,8B06,8B1A,8B30,8B44,8B4E"/>
+		<tcptssequence class="none returned (unsupported)"/>
+		<times srtt="80152" rttvar="36676" to="226856"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968277">
+		<status state="up" reason="echo-reply"/>
+		<address addr="212.247.4.171" addrtype="ipv4"/>
+		<hostnames>
+</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="http" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os/>
+		<times srtt="189484" rttvar="169110" to="865924"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968277">
+		<status state="up" reason="echo-reply"/>
+		<address addr="84.121.157.80" addrtype="ipv4"/>
+		<hostnames>
+			<hostname name="84.121.157.80.dyn.user.ono.com" type="PTR"/>
+		</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="http" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os/>
+		<times srtt="210686" rttvar="188134" to="963222"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968277">
+		<status state="up" reason="echo-reply"/>
+		<address addr="77.182.9.211" addrtype="ipv4"/>
+		<hostnames>
+			<hostname name="sign-4db609d3.pool.mediaWays.net" type="PTR"/>
+		</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="http" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="msrpc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="filtered" reason="no-response" reason_ttl="0"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="filtered" reason="admin-prohibited" reason_ttl="51"/>
+				<service name="ms-sql-s" method="table" conf="3"/>
+			</port>
+		</ports>
+		<os>
+			<osclass type="game console" vendor="Nintendo" osfamily="embedded" accuracy="89"/>
+			<osclass type="firewall" vendor="D-Link" osfamily="embedded" accuracy="86"/>
+			<osclass type="WAP" vendor="Linksys" osfamily="embedded" accuracy="86"/>
+			<osmatch name="Nintendo DS game console" accuracy="89" line="34345"/>
+			<osmatch name="D-Link DFL-700 firewall" accuracy="86" line="8278"/>
+			<osmatch name="Linksys WRT54G v8 wireless broadband router" accuracy="86" line="18715"/>
+		</os>
+		<times srtt="208267" rttvar="71485" to="494207"/>
+	</host>
+	<host starttime="1282967799" endtime="1282968308">
+		<status state="up" reason="reset"/>
+		<address addr="70.3.23.23" addrtype="ipv4"/>
+		<hostnames>
+			<hostname name="70-3-23-23.pools.spcsdns.net" type="PTR"/>
+		</hostnames>
+		<ports>
+			<port protocol="tcp" portid="22">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="ssh" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="80">
+				<state state="open" reason="syn-ack" reason_ttl="30"/>
+			</port>
+			<port protocol="tcp" portid="135">
+				<state state="open" reason="syn-ack" reason_ttl="30"/>
+			</port>
+			<port protocol="tcp" portid="389">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="ldap" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="458">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="appleqtc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="625">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="apple-xsrvr-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="626">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="apple-imap-admin" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="666">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="doom" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="953">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="rndc" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="995">
+				<state state="closed" reason="reset" reason_ttl="49"/>
+				<service name="pop3s" method="table" conf="3"/>
+			</port>
+			<port protocol="tcp" portid="1433">
+				<state state="open" reason="syn-ack" reason_ttl="30"/>
+			</port>
+		</ports>
+		<os>
+			<portused state="open" proto="tcp" portid="80"/>
+			<portused state="closed" proto="tcp" portid="22"/>
+			<portused state="closed" proto="udp" portid="44408"/>
+			<osclass type="WAP" vendor="Linux" osfamily="Linux" osgen="2.4.X" accuracy="93"/>
+			<osclass type="general purpose" vendor="Linux" osfamily="Linux" osgen="2.6.X" accuracy="93"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="Vista" accuracy="92"/>
+			<osclass type="firewall" vendor="Fortinet" osfamily="embedded" accuracy="91"/>
+			<osclass type="WAP" vendor="AVM" osfamily="embedded" accuracy="87"/>
+			<osclass type="storage-misc" vendor="D-Link" osfamily="embedded" accuracy="87"/>
+			<osclass type="WAP" vendor="Linksys" osfamily="embedded" accuracy="87"/>
+			<osclass type="remote management" vendor="Dell" osfamily="embedded" accuracy="87"/>
+			<osclass type="specialized" vendor="Google" osfamily="embedded" accuracy="87"/>
+			<osclass type="print server" vendor="HP" osfamily="embedded" accuracy="87"/>
+			<osclass type="switch" vendor="HP" osfamily="embedded" accuracy="87"/>
+			<osclass type="firewall" vendor="IPCop" osfamily="Linux" osgen="2.4.X" accuracy="87"/>
+			<osclass type="general purpose" vendor="Linksys" osfamily="Linux" osgen="2.4.X" accuracy="87"/>
+			<osclass type="specialized" vendor="Linux" osfamily="Linux" osgen="2.4.X" accuracy="87"/>
+			<osclass type="broadband router" vendor="Linux" osfamily="Linux" osgen="2.6.X" accuracy="87"/>
+			<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2008" accuracy="87"/>
+			<osclass type="proxy server" vendor="Riverbed" osfamily="embedded" accuracy="87"/>
+			<osclass type="storage-misc" vendor="Buffalo" osfamily="embedded" accuracy="86"/>
+			<osclass type="WAP" vendor="Acorp" osfamily="embedded" accuracy="86"/>
+			<osclass type="broadband router" vendor="Actiontec" osfamily="embedded" accuracy="86"/>
+			<osmatch name="DD-WRT v23 (Linux 2.4.36)" accuracy="93" line="19678"/>
+			<osmatch name="Linux 2.6.18" accuracy="93" line="21078"/>
+			<osmatch name="Microsoft Windows Vista Home Premium SP1" accuracy="92" line="29490"/>
+			<osmatch name="Fortinet FortiGate-100A firewall" accuracy="91" line="10447"/>
+			<osmatch name="AVM FRITZ!Box FON WLAN 7170 WAP" accuracy="87" line="3887"/>
+			<osmatch name="D-Link DNS-323 NAS device or Linksys WRT300N wireless broadband router" accuracy="87" line="8373"/>
+			<osmatch name="Dell Remote Access Controller 5/I (DRAC 5/I)" accuracy="87" line="9340"/>
+			<osmatch name="Google Mini search appliance" accuracy="87" line="12671"/>
+			<osmatch name="HP 4200 PSA (Print Server Appliance) model J4117A" accuracy="87" line="12916"/>
+			<osmatch name="HP Brocade 4Gb SAN switch" accuracy="87" line="14179"/>
+		</os>
+		<distance value="17"/>
+		<times srtt="1565514" rttvar="1833640" to="8900074"/>
+	</host>
+	<runstats>
+		<finished time="1282968308" timestr="Fri Aug 27 22:05:08 2010" elapsed="509.39"/>
+		<hosts up="11" down="89" total="100"/>
+		<!-- Nmap done at Fri Aug 27 22:05:08 2010; 100 IP addresses (11 hosts up) scanned in 509.39 seconds -->
+	</runstats>
+</nmaprun>
