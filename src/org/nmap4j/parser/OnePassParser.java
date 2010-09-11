@@ -35,6 +35,7 @@
 package org.nmap4j.parser;
 
 import java.io.IOException;
+import java.io.StringReader;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -43,6 +44,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.nmap4j.data.NMapRun;
 import org.nmap4j.parser.events.NMap4JParserEventListener;
 import org.nmap4j.parser.events.ParserEvent;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 
@@ -66,12 +68,16 @@ import org.xml.sax.SAXException;
  */
 public class OnePassParser implements NMap4JParserEventListener {
 	
+	public static final int STRING_INPUT = 1 ;
+	public static final int FILE_NAME_INPUT = 2 ;
+	
 	private  NMapRun nmapRun ;
 	public OnePassParser() {
 		
 	}
 	
-	public NMapRun parse( String fileName ) {
+
+	public NMapRun parse( String input, int type  ) {
 		
 		INMapRunHandler nmrh = new NMapRunHandlerImpl() ;
 		NMapXmlHandler nmxh = new NMapXmlHandler( nmrh ) ;
@@ -84,9 +90,18 @@ public class OnePassParser implements NMap4JParserEventListener {
 	      //get a new instance of parser
 	      SAXParser sp = spf.newSAXParser();
 	      
+	      if( type == STRING_INPUT ) {
+			  StringReader strReader = new StringReader( input ) ;
+			  InputSource source  = new InputSource (strReader ) ;
+
+		      sp.parse( source, nmxh );
+	    	  
+	      } else if( type == FILE_NAME_INPUT ) {
+	    	//parse the file and also register this class for call backs
+		      sp.parse("file:" + input, nmxh );  
+	      }
 	      
-	      //parse the file and also register this class for call backs
-	      sp.parse("file:" + fileName, nmxh );
+	      
 	      
 	    }catch(SAXException se) {
 	      se.printStackTrace();

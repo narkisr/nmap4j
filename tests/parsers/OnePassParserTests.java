@@ -9,15 +9,17 @@ import test.constants.IConstants;
 
 public class OnePassParserTests implements IConstants {
 	
+	String fileName = "nmap-xml/ms-vscan.xml" ;
+	int count = 0 ;
 	@Test
 	public void testOnePass() {
 		OnePassParser opp = new OnePassParser() ;
-		NMapRun nmapRun = opp.parse( XML_FILE ) ;
+		NMapRun nmapRun = opp.parse( fileName, OnePassParser.FILE_NAME_INPUT ) ;
 		if( nmapRun != null ) {
-			for( Host h: nmapRun.getHosts() ) {
-				System.out.println( "host = " + h ) ;
- 			}
-			System.out.println( nmapRun ) ;
+//			for( Host h: nmapRun.getHosts() ) {
+//				System.out.println( "host = " + h ) ;
+// 			}
+			System.out.println( "hosts count: " + nmapRun.getHosts().size() ) ;
 		} else {
 			System.out.println( "nmapRun is null" ) ;
 		}

@@ -98,8 +98,13 @@ public class NMapRunHandlerImpl implements INMapRunHandler {
 
 	public Host createHost(Attributes attributes) {
 		Host host  = new Host() ;
-		host.setStartTime( Long.parseLong( attributes.getValue( Host.STARTTIME_ATTR ) ) ) ;
-		host.setEndTime( Long.parseLong( attributes.getValue( Host.ENDTIME_ATTR ) ) ) ;
+		if( attributes.getValue( Host.STARTTIME_ATTR ) != null ) {
+			host.setStartTime( Long.parseLong( attributes.getValue( Host.STARTTIME_ATTR ) ) ) ;	
+		}
+		if( attributes.getValue( Host.ENDTIME_ATTR ) != null ) {
+			host.setEndTime( Long.parseLong( attributes.getValue( Host.ENDTIME_ATTR ) ) ) ;	
+		}
+		
 		return host ;
 	}
 

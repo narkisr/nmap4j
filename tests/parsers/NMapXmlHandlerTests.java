@@ -20,6 +20,8 @@ public class NMapXmlHandlerTests implements IConstants {
 	
 	@Test
 	public void basicTest() {
+		
+		String fileName = "nmap-xml/ms-vscan.xml" ;
 	
 		INMapRunHandler nmrh = new NMapRunHandlerImpl() ;
 		NMapXmlHandler nmxh = new NMapXmlHandler( nmrh ) ;
@@ -36,7 +38,7 @@ public class NMapXmlHandlerTests implements IConstants {
 	      
 	      
 	      //parse the file and also register this class for call backs
-	      sp.parse("file:" + XML_FILE, nmxh );
+	      sp.parse("file:" + fileName, nmxh );
 	      
 	    }catch(SAXException se) {
 	      se.printStackTrace();
@@ -51,6 +53,8 @@ public class NMapXmlHandlerTests implements IConstants {
 	
 	
 	private class TestListener implements NMap4JParserEventListener {
+		
+//		public static int count = 0 ;
 
 		@Override
 		public void parseEventNotification(ParserEvent event) {

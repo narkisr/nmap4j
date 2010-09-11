@@ -190,6 +190,10 @@ public class ArgumentProperties {
     return convertSetToString( excludeHosts,"," ) ;
   }
   
+  public void clearFlags() {
+	  flagMap.clear() ;
+  }
+  
   private String convertSetToString( Set<String> hosts, String delimiter ) {
     StringBuffer hostsBuffer = new StringBuffer() ;
     Iterator<String> hostsIt = hosts.iterator() ;
