@@ -14,8 +14,8 @@
 	<property name="javadoc.dir" value="javadocs"/>
 
 	<!-- tags for labeling the jar files -->
-	<property name="compile.date" value="09062010-1001"/>
-  <property name="version.number" value="0.0.1"/>   
+	<property name="compile.date" value="09102010-2307"/>
+  <property name="version.number" value="0.0.2"/>   
   <property name="tag" value="ALPHA"/>
 	
 	<property name="base.file.name" value="org.nmap4j"/>
@@ -41,7 +41,7 @@
 	
 	<target name="all" depends="clean, copy, compile, jar"/>
 	
-	<target name="mkfulldist" depends="all,mkjavadoc,src-jar,package-dist"/>
+	<target name="mkfulldist" depends="all,mkjavadoc,src-jar,package-dist,createmd5"/>
 	
 	<target name="clean">
 	 <delete dir="${dist.dir}"/>
@@ -176,6 +176,10 @@
         <fileset dir="${dist.dir}" includes="**/*.jar"/>
     	  <fileset dir="." includes="license.txt"/>
      </zip> 
+	</target>
+	
+	<target name="createmd5">
+	  <checksum file="${dist.dir}/${dist.zip.file.name}"/>
 	</target>
 		
 </project>
