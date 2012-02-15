@@ -1,4 +1,4 @@
-package core.nmap;
+package org.nmap4j.core.nmap;
 
 import static org.junit.Assert.*;
 
@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.nmap4j.core.nmap.NMapProperties;
 
-public class NMapPropertiesTests {
+public class NMapPropertiesTest {
 	
 	private NMapProperties fixture ;
 	

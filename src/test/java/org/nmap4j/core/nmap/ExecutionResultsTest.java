@@ -1,4 +1,4 @@
-package core.nmap;
+package org.nmap4j.core.nmap;
 
 import static org.junit.Assert.*;
 
@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.nmap4j.core.nmap.ExecutionResults;
 
-public class ExecutionResultsTests {
+public class ExecutionResultsTest {
 	
 	private ExecutionResults fixture ;
 	

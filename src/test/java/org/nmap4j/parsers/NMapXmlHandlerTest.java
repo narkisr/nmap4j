@@ -1,6 +1,7 @@
-package parsers;
+package org.nmap4j.parsers;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -16,7 +17,7 @@ import org.xml.sax.SAXException;
 
 import test.constants.IConstants;
 
-public class NMapXmlHandlerTests implements IConstants {
+public class NMapXmlHandlerTest implements IConstants {
 	
 	@Test
 	public void basicTest() {
@@ -36,9 +37,11 @@ public class NMapXmlHandlerTests implements IConstants {
 	      //get a new instance of parser
 	      SAXParser sp = spf.newSAXParser();
 	      
+	      // get the ms-vscan.xml as a stream
+	      InputStream in = getClass().getClassLoader().getResourceAsStream( fileName ) ;
 	      
 	      //parse the file and also register this class for call backs
-	      sp.parse("file:" + fileName, nmxh );
+	      sp.parse( in, nmxh );
 	      
 	    }catch(SAXException se) {
 	      se.printStackTrace();

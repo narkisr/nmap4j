@@ -1,4 +1,4 @@
-package core.nmap;
+package org.nmap4j.core.nmap;
 
 import static org.junit.Assert.fail;
 
@@ -13,7 +13,7 @@ import org.nmap4j.core.nmap.NMapExecutor;
 import org.nmap4j.core.nmap.NMapInitializationException;
 import org.nmap4j.core.nmap.NMapProperties;
 
-public class NMapExecutorTests {
+public class NMapExecutorTest {
 	
 	private ArgumentProperties nmapArgs ;
 	private NMapProperties nmapProps ;

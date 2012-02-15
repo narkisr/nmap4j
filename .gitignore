@@ -3,4 +3,5 @@ build
 dist
 javadocs
 .settings
-nmap-xml
+target
+*.class

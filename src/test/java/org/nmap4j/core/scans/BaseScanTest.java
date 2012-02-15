@@ -1,4 +1,4 @@
-package core.scans;
+package org.nmap4j.core.scans;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +12,7 @@ import org.nmap4j.core.scans.ParameterValidationFailureException;
 import org.nmap4j.core.scans.IScan.OutputType;
 import org.nmap4j.core.scans.IScan.TimingFlag;
 
-public class BaseScanTests {
+public class BaseScanTest {
 
 	@Test
 	public void testSimpleScan() {

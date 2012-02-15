@@ -1,4 +1,4 @@
-package core.flags;
+package org.nmap4j.core.flags;
 
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
@@ -13,7 +13,7 @@ import org.junit.Test;
 import org.nmap4j.core.flags.ArgumentProperties;
 import org.nmap4j.core.flags.Flag;
 
-public class ArgumentPropertiesTests {
+public class ArgumentPropertiesTest {
 	
 	private ArgumentProperties fixture ;
 	
