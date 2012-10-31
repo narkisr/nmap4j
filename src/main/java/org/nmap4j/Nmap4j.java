@@ -55,7 +55,7 @@ public class Nmap4j {
 	}
 	
 	/**
-	 * Executes the nmap sacn with the parameters set.  You should have 
+	 * Executes the nmap scan with the parameters set.  You should have 
 	 * called addFlags() with appropriate Nmap flags prior to executing the
 	 * scan.
 	 * 
@@ -64,7 +64,7 @@ public class Nmap4j {
 	 */
 	public void execute() throws NMapInitializationException, NMapExecutionException {
 		nmapExecutor = new NMapExecutor( flags, nmapProperties ) ;
-		nmapExecutor.execute() ;
+		results = nmapExecutor.execute() ;
 	}
 	
 	/**

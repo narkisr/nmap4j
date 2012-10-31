@@ -178,7 +178,7 @@ public class NMapXmlHandler extends DefaultHandler {
 		}
 		if( qName.equals( Address.ADDRESS_TAG ) ) {
 			address = runHandler.createAddress(attributes ) ;
-			host.setAddress( address ) ;
+			host.addAddress( address ) ;
 		}
 		if( qName.equals( Hostnames.HOSTNAMES_TAG ) ) {
 			hostnames = runHandler.createHostnames( attributes ) ;

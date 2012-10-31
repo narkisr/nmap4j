@@ -7,6 +7,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import junit.framework.Assert;
+
 import org.junit.Test;
 import org.nmap4j.parser.INMapRunHandler;
 import org.nmap4j.parser.NMapRunHandlerImpl;
@@ -62,8 +64,9 @@ public class NMapXmlHandlerTest implements IConstants {
 		@Override
 		public void parseEventNotification(ParserEvent event) {
 			//System.out.println( "source = " + event.getEventSource() ) ;
-			System.out.println( "payload = " + event.getPayload() ) ;
-			
+			if( event.getPayload() == null ) {
+				Assert.fail() ;
+			}			
 		}
 		
 	}

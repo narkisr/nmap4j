@@ -30,11 +30,14 @@ public class BaseScanTest {
 		try {
 			ExecutionResults results = baseScan.executeScan() ;
 			System.out.println( results.getExecutedCommand() ) ;
+			System.out.println( results.getOutput() ) ;
 			if( results.hasErrors() ) {
 				System.out.println( "Errors: " +  results.getErrors() ) ;
 			} else {
 				System.out.println( "Results: " +  results.getOutput() ) ;
 			}
+			
+			
 			
 		} catch (ParameterValidationFailureException e) {
 			e.printStackTrace();

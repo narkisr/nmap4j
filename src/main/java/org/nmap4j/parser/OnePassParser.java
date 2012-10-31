@@ -72,11 +72,11 @@ public class OnePassParser implements NMap4JParserEventListener {
 	public static final int FILE_NAME_INPUT = 2 ;
 	
 	private  NMapRun nmapRun ;
+	
 	public OnePassParser() {
 		
 	}
 	
-
 	public NMapRun parse( String input, int type  ) {
 		
 		INMapRunHandler nmrh = new NMapRunHandlerImpl() ;

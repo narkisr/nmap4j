@@ -34,6 +34,8 @@
  */
 package org.nmap4j.data.nmaprun;
 
+import java.util.ArrayList;
+
 import org.nmap4j.data.host.Address;
 import org.nmap4j.data.host.Distance;
 import org.nmap4j.data.host.Hostnames;
@@ -58,7 +60,7 @@ public class Host {
 	private long endTime ;
 	
 	private Status status ;
-	private Address address ; 
+	private ArrayList<Address> addresses ; 
 	private Ports ports ;
 	private Os os ;
 	private Uptime uptime ;
@@ -69,7 +71,9 @@ public class Host {
 	private Times times ;
 	private Hostnames hostnames ;
 	
-	
+	public Host() {
+		addresses = new ArrayList<Address>() ;
+	}
 	
 	public Hostnames getHostnames() {
 		return hostnames;
@@ -97,11 +101,14 @@ public class Host {
 	}
 
 	
-	public Address getAddress() {
-		return address;
+	public ArrayList<Address> getAddresses() {
+		return addresses;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddress(ArrayList<Address> address) {
+		this.addresses = address;
+	}
+	public void addAddress( Address address ) {
+		addresses.add( address ) ;
 	}
 	public Ports getPorts() {
 		return ports;
