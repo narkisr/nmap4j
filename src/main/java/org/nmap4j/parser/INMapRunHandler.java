@@ -36,6 +36,7 @@ package org.nmap4j.parser;
 
 import org.nmap4j.data.NMapRun;
 import org.nmap4j.data.host.Address;
+import org.nmap4j.data.host.Cpe;
 import org.nmap4j.data.host.Distance;
 import org.nmap4j.data.host.Hostnames;
 import org.nmap4j.data.host.IpIdSequence;
@@ -134,5 +135,7 @@ public interface INMapRunHandler {
 	public Finished createFinished(  Attributes attributes ) ;
 	
 	public Hosts createHosts(  Attributes attributes ) ;
+	
+	public Cpe createCpe( Attributes attributes ) ;
 	
 }

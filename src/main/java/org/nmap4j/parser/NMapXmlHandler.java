@@ -41,6 +41,7 @@ import java.util.List;
 
 import org.nmap4j.data.NMapRun;
 import org.nmap4j.data.host.Address;
+import org.nmap4j.data.host.Cpe;
 import org.nmap4j.data.host.Distance;
 import org.nmap4j.data.host.Hostnames;
 import org.nmap4j.data.host.Os;
@@ -115,6 +116,11 @@ public class NMapXmlHandler extends DefaultHandler {
     private RunStats runStats ;
     private Finished finished ;
 	private Hosts hosts ;
+	private Cpe cpe ;
+	
+	private boolean isCpeData = false ;
+	
+	private String previousQName ;
     
 	public NMapXmlHandler( INMapRunHandler handler ) {
 		listeners = new ArrayList<NMap4JParserEventListener>() ;
@@ -153,6 +159,7 @@ public class NMapXmlHandler extends DefaultHandler {
 	@Override
 	public void startElement(String uri, String localName, String qName,
 			Attributes attributes) throws SAXException {
+		
 		if( qName.equals( NMapRun.NMAPRUN_TAG ) ) {
 			nmapRun = runHandler.createNMapRun( attributes ) ;
 		}
@@ -251,6 +258,30 @@ public class NMapXmlHandler extends DefaultHandler {
 		if( qName.equals( Hosts.HOSTS_TAG ) ) {
 			hosts = runHandler.createHosts( attributes ) ;
 			runStats.setHosts( hosts ) ;
+		}
+		if( qName.equals( Cpe.CPE_ATTR  ) ) {
+			isCpeData = true ;
+			cpe = runHandler.createCpe( attributes ) ;
+			if( previousQName.equals( OsClass.OSCLASS_TAG ) )  {
+				osClass.addCpe( cpe ) ;
+			} else if( previousQName.equals( Service.SERVICE_TAG ) ) {
+				
+			}
+		}
+		
+		// set the previousQName for comparison to later elements
+		previousQName = qName ;
+	}
+	
+	
+
+	@Override
+	public void characters(char[] ch, int start, int length)
+			throws SAXException {
+		if( isCpeData ) {
+			String cpeText = new String( ch, start, length ) ;
+			cpe.setCpeData(cpeText) ;
+			isCpeData = false ;
 		}
 	}
 
@@ -356,6 +387,10 @@ public class NMapXmlHandler extends DefaultHandler {
 		if( qName.equals( Hosts.HOSTS_TAG ) ) {
 			fireEvent( hosts ) ;
 			hosts = null ;
+		}
+		if( qName.equals( Cpe.CPE_ATTR ) ) {
+			fireEvent( cpe ) ;
+			cpe  = null ;
 		}
 	}
 

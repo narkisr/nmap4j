@@ -34,6 +34,10 @@
  */
 package org.nmap4j.data.host.os;
 
+import java.util.ArrayList;
+
+import org.nmap4j.data.host.Cpe;
+
 public class OsClass {
 	
 	public final static String OSCLASS_TAG = "osclass" ;
@@ -49,6 +53,11 @@ public class OsClass {
 	private String osfamily ; 
 	private String osgen ; 
 	private String accuracy ;
+	private ArrayList<Cpe> cpe ;
+	
+	public OsClass() {
+		cpe = new ArrayList<Cpe>() ;
+	}
 	
 	public String getType() {
 		return type;
@@ -80,6 +89,16 @@ public class OsClass {
 	public void setAccuracy(String accuracy) {
 		this.accuracy = accuracy;
 	}
+	public ArrayList<Cpe> getCpe() {
+		return cpe;
+	}
+	public void setCpe(ArrayList<Cpe> cpe) {
+		this.cpe = cpe;
+	}
+	public void addCpe( Cpe cpe ) {
+		this.cpe.add( cpe ) ;
+	}
+
 	@Override
 	public String toString() {
 		return "OsClass [accuracy=" + accuracy + ", osfamily=" + osfamily

@@ -18,6 +18,8 @@ package org.nmap4j.data.host;
  *
  */
 public class Cpe {
+	
+	public final static String CPE_ATTR = "cpe" ;
 
 	String cpeData ;
 

@@ -36,6 +36,7 @@ package org.nmap4j.parser;
 
 import org.nmap4j.data.NMapRun;
 import org.nmap4j.data.host.Address;
+import org.nmap4j.data.host.Cpe;
 import org.nmap4j.data.host.Distance;
 import org.nmap4j.data.host.Hostnames;
 import org.nmap4j.data.host.IpIdSequence;
@@ -284,5 +285,15 @@ public class NMapRunHandlerImpl implements INMapRunHandler {
 		hostname.setType( attributes.getValue( Hostname.TYPE_ATTR ) ) ;
 		return hostname ;
 	}
+
+	@Override
+	public Cpe createCpe(Attributes attributes) {
+		Cpe cpe = new Cpe() ;
+		
+		
+		return cpe ;
+	}
+	
+	
 
 }
