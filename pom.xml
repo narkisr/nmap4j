@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.nmap4j</groupId>
   <artifactId>org.nmap4j</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.3-SNAPSHOT</version>
   <description>Nmap4j</description>
   <dependencies>
   	<dependency>
