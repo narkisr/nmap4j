@@ -20,6 +20,8 @@ import org.nmap4j.data.host.Cpe;
 import org.nmap4j.data.host.os.OsClass;
 import org.nmap4j.data.nmaprun.Host;
 import org.nmap4j.parser.OnePassParser;
+import org.nmap4j.parser.events.NMap4JParserEventListener;
+import org.nmap4j.parser.events.ParserEvent;
 
 import test.constants.IConstants;
 
@@ -171,5 +173,57 @@ public class OnePassParserTest implements IConstants {
 			e.printStackTrace();
 			fail() ;
 		}
+	}
+	
+	@Test
+	public void testAddingListener() {
+		System.out.println( "start") ;
+		
+		String smbFileName = "nmap-xml/SMB-os-discovery_CPE.xml" ;
+		
+		OnePassParser opp = new OnePassParser() ;
+		
+		NMapRun nmapRun = null ;
+		
+		HostListener simpleListener = new HostListener() ;
+		
+		try {
+			InputStream is = getClass().getClassLoader().getResourceAsStream( smbFileName ) ;
+			
+			String fileAsString = IOUtils.toString( is ) ;
+			
+			opp.addListener( simpleListener ) ; 
+			nmapRun = opp.parse( fileAsString, OnePassParser.STRING_INPUT );
+			
+			ArrayList<Host> hosts = nmapRun.getHosts() ;			
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		if( nmapRun != null ) {
+			if( nmapRun.getHosts().size() != simpleListener.getHostCount() ) {
+				fail() ;
+			}
+		} else {
+			fail() ;
+		}
+	}
+	
+	private class HostListener implements NMap4JParserEventListener {
+		
+		private int hostCount = 0 ;
+
+		@Override
+		public void parseEventNotification(ParserEvent event) {
+			if( event.getPayload() instanceof Host ) {
+				hostCount++ ;
+			}
+		}
+		
+		public int getHostCount() {
+			return hostCount ;
+		}
+		
 	}
 }

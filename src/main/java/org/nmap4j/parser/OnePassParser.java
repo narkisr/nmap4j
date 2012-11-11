@@ -73,14 +73,16 @@ public class OnePassParser implements NMap4JParserEventListener {
 	
 	private  NMapRun nmapRun ;
 	
+	private INMapRunHandler nmrh ;
+	private NMapXmlHandler nmxh ;
+	
+	
 	public OnePassParser() {
-		
+		nmrh = new NMapRunHandlerImpl() ;
+		nmxh = new NMapXmlHandler( nmrh ) ;	
 	}
 	
 	public NMapRun parse( String input, int type  ) {
-		
-		INMapRunHandler nmrh = new NMapRunHandlerImpl() ;
-		NMapXmlHandler nmxh = new NMapXmlHandler( nmrh ) ;
 		
 		NMapXmlHandler.addListener( this ) ;
 		
@@ -121,6 +123,14 @@ public class OnePassParser implements NMap4JParserEventListener {
 		if( event.getPayload() instanceof NMapRun ) {
 			nmapRun = (NMapRun) event.getPayload() ;
 		}
+	}
+	
+	public void addListener(NMap4JParserEventListener aListener ) {
+		NMapXmlHandler.addListener( aListener ) ; 
+ 	}
+	
+	public void removeListener( NMap4JParserEventListener aListener ) {
+		NMapXmlHandler.removeListener( aListener ) ;
 	}
 	
 }
