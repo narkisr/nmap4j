@@ -130,20 +130,36 @@ public class NMapProperties {
   }
    
   /**
+   * Returns the system's  os.name property.
+   * @return
+   */
+  private String getOS() {
+    return System.getProperty( "os.name" ) ;
+  }
+  
+  /**
    * This returns the full path to the nmap version to be executed.
    * @return
    */
   public String getFullyFormattedCommand() {
+	
     StringBuffer command = new StringBuffer() ;
-    
-    command.append(  getBinDir() ) ;
-    command.append( File.separator ) ;
-    command.append( COMMAND ) ;
-    command.append( " " ) ;
-    command.append( Flag.DATADIR ) ;
-    command.append( " " ) ;
-    command.append( getShareDir() ) ;
-    
+   
+    if ( getOS().toLowerCase().contains( "windows" ) ){
+    	command.append( pathToNMap ) ;
+        command.append( File.separator ) ;
+        command.append( COMMAND ) ;
+    	command.append( ".exe" ) ;
+    } 
+    else { //Linux or MacOsX case
+    	command.append( getBinDir() ) ;
+    	command.append( File.separator ) ;
+    	command.append( COMMAND ) ;
+    	command.append( " " ) ;
+    	command.append( Flag.DATADIR ) ;
+    	command.append( " " ) ;
+    	command.append( getShareDir() ) ;
+    }
     
     return command.toString() ;
   }
