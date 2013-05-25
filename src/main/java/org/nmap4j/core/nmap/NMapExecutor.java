@@ -52,131 +52,112 @@ import org.nmap4j.core.flags.ArgumentProperties ;
  * 
  */
 public class NMapExecutor {
- 
-  private ArgumentProperties nmapArguments ;
-  private NMapProperties nmapProperties ;
 
-  /**
-   * Constructs an instance based on the ArgumentProperties and the
-   * NMapProperties passed in.  These become the basis for the subsequent
-   * execution of NMap.
-   * 
-   * @param argProps
-   * @param nmapProps
-   * @throws NMapInitializationException
-   */
-  public NMapExecutor(ArgumentProperties argProps, 
-		              NMapProperties nmapProps) throws NMapInitializationException {
-    nmapArguments = argProps ;
-    nmapProperties = nmapProps ;
-    if( nmapArguments == null || nmapProperties == null ) {
-    	throw new NMapInitializationException( "You cannot instantiate " +
-    			"an NMapExecutor with nulls in either argument. Please " +
-    			"refer to the documentation if you aren't sure how to proceed.") ;
-    }
-    if( nmapProps.getPath() == null ||
-        (nmapProps.getPath() != null && nmapProps.getPath().length() <= 0 ) ) {
-      throw new NMapInitializationException( "the NMAP_HOME variable is not set "  +
-                                             "or you did not set this path." ) ;
-    }
-    // not sure we'll keep this
-    //validateOS() ;
-  }
-  
-  /**
-   * Make sure we're on an OS we want.  Not really sure I want to keep this
-   * or if I do, maybe I want to make it so that the end user of this API can 
-   * decide what OS's they want to run this on.
-   * <p>
-   * NOTE: if I decide to dump the sudo from within the app this goes away
-   * because it's handled at the OS level.
-   * 
-   * @throws NMapInitializationException
-   */
-  private void validateOS() throws NMapInitializationException {
-    String osName = getOS() ;
-    
-    if( !( osName != null && ( osName.toLowerCase().contains( "linux"  ) ||
-                               osName.toLowerCase().contains( "mac os x"  ) ) ) ) {
-      throw new NMapInitializationException( osName + " is not a supported OS at " + 
-    		                                                    "this time." ) ;
-    }
-  }
+    private ArgumentProperties nmapArguments ;
+    private NMapProperties nmapProperties ;
 
-  /**
-   * Returns the system's  os.name property.
-   * @return
-   */
-  private String getOS() {
-    return System.getProperty( "os.name" ) ;
-  }
-
-  /**
-   * Get the nmap command as a StringBuffer.
-   * @return
-   */
-  private StringBuffer getCommand() {
-
-    StringBuffer fullCommand = new StringBuffer() ;
-    fullCommand.append( nmapProperties.getFullyFormattedCommand() ) ;
-    fullCommand.append( " " ) ;
-    fullCommand.append( nmapArguments.getFlags() ) ;
-
-    return fullCommand ;
-  }
-
-  /**
-   * This method attempts to execute NMap using the properties supplied
-   * when this object was constructed.
-   * <p>
-   * This method can throw an NMapExecutionException which will be a wrapper
-   * around an IO Exception.
-   * 
-   * @return
-   * @throws NMapExecutionException
-   */
-  public ExecutionResults execute() throws NMapExecutionException {
-    StringBuffer command = getCommand() ;
-    ExecutionResults results = new ExecutionResults() ;
-
-    try {
-      results.setExecutedCommand( command.toString() ) ;
-      Process process = Runtime.getRuntime().exec( command.toString() ) ;
-      
-      results.setErrors( convertStream( process.getErrorStream() ) ) ;
-      results.setOutput( convertStream( process.getInputStream() ) ) ;
-
-    } catch ( IOException e ) {
-      throw new NMapExecutionException( e.getMessage(), e ) ;
+    /**
+     * Constructs an instance based on the ArgumentProperties and the
+     * NMapProperties passed in. These become the basis for the subsequent
+     * execution of NMap.
+     * 
+     * @param argProps
+     * @param nmapProps
+     * @throws NMapInitializationException
+     */
+    public NMapExecutor( ArgumentProperties argProps, NMapProperties nmapProps )
+            throws NMapInitializationException {
+        nmapArguments = argProps ;
+        nmapProperties = nmapProps ;
+        if ( nmapArguments == null || nmapProperties == null ) {
+            throw new NMapInitializationException(
+               "You cannot instantiate "
+               + "an NMapExecutor with nulls in either argument. Please "
+               + "refer to the documentation if you aren't sure how to proceed." ) ;
+        }
+        if ( nmapProps.getPath() == null
+                || ( nmapProps.getPath() != null && nmapProps.getPath()
+                        .length() <= 0 ) ) {
+            throw new NMapInitializationException(
+                    "the NMAP_HOME variable is not set "
+                            + "or you did not set this path." ) ;
+        }
     }
 
-    return results ;
-  }
+    /**
+     * Returns the system's os.name property.
+     * 
+     * @return
+     */
+    private String getOS() {
+        return System.getProperty( "os.name" ) ;
+    }
 
-  /**
-   * Converts the given InputStream to a String.  This is how the 
-   * streams from executing NMap are converted and later stored in the 
-   * ExecutionResults.
-   * 
-   * @param is
-   * @return
-   * @throws IOException
-   */
-  private String convertStream( InputStream is ) throws IOException {
-    String output;
-    StringBuffer outputBuffer = new StringBuffer() ;
-    BufferedReader streamReader = new BufferedReader(
-            new InputStreamReader( is ) ) ;
-    while ( ( output = 
-      streamReader.readLine() ) != null ) {
-      outputBuffer.append( output ) ;
-      outputBuffer.append(  "\n" ) ;
-    } 
-    return outputBuffer.toString() ;
-  }
-  
-  public String toString()  {
-	  return getCommand().toString();
-  }
+    /**
+     * Get the nmap command as a StringBuffer.
+     * 
+     * @return
+     */
+    private StringBuffer getCommand() {
+
+        StringBuffer fullCommand = new StringBuffer() ;
+        fullCommand.append( nmapProperties.getFullyFormattedCommand() ) ;
+        fullCommand.append( " " ) ;
+        fullCommand.append( nmapArguments.getFlags() ) ;
+
+        return fullCommand ;
+    }
+
+    /**
+     * This method attempts to execute NMap using the properties supplied when
+     * this object was constructed.
+     * <p>
+     * This method can throw an NMapExecutionException which will be a wrapper
+     * around an IO Exception.
+     * 
+     * @return
+     * @throws NMapExecutionException
+     */
+    public ExecutionResults execute() throws NMapExecutionException {
+        StringBuffer command = getCommand() ;
+        ExecutionResults results = new ExecutionResults() ;
+
+        try {
+            results.setExecutedCommand( command.toString() ) ;
+            Process process = Runtime.getRuntime().exec( command.toString() ) ;
+
+            results.setErrors( convertStream( process.getErrorStream() ) ) ;
+            results.setOutput( convertStream( process.getInputStream() ) ) ;
+
+        } catch ( IOException e ) {
+            throw new NMapExecutionException( e.getMessage(), e ) ;
+        }
+
+        return results ;
+    }
+
+    /**
+     * Converts the given InputStream to a String. This is how the streams from
+     * executing NMap are converted and later stored in the ExecutionResults.
+     * 
+     * @param is
+     * @return
+     * @throws IOException
+     */
+    private String convertStream( InputStream is ) throws IOException {
+        String output ;
+        StringBuffer outputBuffer = new StringBuffer() ;
+        BufferedReader streamReader = new BufferedReader(
+                new InputStreamReader( is ) ) ;
+        while ( ( output = streamReader.readLine() ) != null ) {
+            outputBuffer.append( output ) ;
+            outputBuffer.append( "\n" ) ;
+        }
+        return outputBuffer.toString() ;
+    }
+
+    public String toString() {
+        return getCommand().toString() ;
+    }
 
 }
