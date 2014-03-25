@@ -5,6 +5,18 @@ package org.nmap4j.model;
  * 
  * 
  * @author jon.svede
+ * 
+ * 
+ *       <port protocol="tcp" portid="443">
+        <state state="open" reason="syn-ack" reason_ttl="244"/>
+        <service name="http" 
+                 product="Microsoft IIS webserver" 
+                 version="6.0" 
+                 ostype="Windows" 
+                 tunnel="ssl" 
+                 method="probed" 
+                 conf="10"/>
+      </port> 
  *
  */
 public class Port {
@@ -15,6 +27,9 @@ public class Port {
 	private String reason ;
 	private String reasonTtl ;
 	private String serviceName ;
+	private String product ;
+	private String ostype ;
+	private String tunnel ;
 	private String method ;
 	private String conf ;
 
@@ -70,5 +85,23 @@ public class Port {
 	}
 	public void setConf(String conf) {
 		this.conf = conf;
+	}
+	public String getProduct() {
+		return product;
+	}
+	public void setProduct(String product) {
+		this.product = product;
+	}
+	public String getOstype() {
+		return ostype;
+	}
+	public void setOstype(String ostype) {
+		this.ostype = ostype;
+	}
+	public String getTunnel() {
+		return tunnel;
+	}
+	public void setTunnel(String tunnel) {
+		this.tunnel = tunnel;
 	}
 }
