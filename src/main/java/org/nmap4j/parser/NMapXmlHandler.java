@@ -55,6 +55,8 @@ import org.nmap4j.data.host.os.OsClass;
 import org.nmap4j.data.host.os.OsMatch;
 import org.nmap4j.data.host.os.PortUsed;
 import org.nmap4j.data.host.ports.Port;
+import org.nmap4j.data.host.trace.Hop;
+import org.nmap4j.data.host.trace.Trace;
 import org.nmap4j.data.nmaprun.Debugging;
 import org.nmap4j.data.nmaprun.Host;
 import org.nmap4j.data.nmaprun.RunStats;
@@ -117,6 +119,8 @@ public class NMapXmlHandler extends DefaultHandler {
     private Finished finished ;
 	private Hosts hosts ;
 	private Cpe cpe ;
+	private Trace trace;
+	private Hop hop;
 	
 	private boolean isCpeData = false ;
 	
@@ -268,7 +272,14 @@ public class NMapXmlHandler extends DefaultHandler {
 				
 			}
 		}
-		
+		if(qName.equals(Trace.TRACE_TAG)) {
+			trace = runHandler.createTrace(attributes);
+			host.setTrace(trace);
+		}
+		if(qName.equals(Hop.HOP_TAG)) {
+			hop = runHandler.createHop(attributes);
+			trace.addHop(hop);
+		}
 		// set the previousQName for comparison to later elements
 		previousQName = qName ;
 	}
@@ -391,6 +402,14 @@ public class NMapXmlHandler extends DefaultHandler {
 		if( qName.equals( Cpe.CPE_ATTR ) ) {
 			fireEvent( cpe ) ;
 			cpe  = null ;
+		}
+		if( qName.equals( Trace.TRACE_TAG) ) {
+			fireEvent( trace ) ;
+			trace  = null ;
+		}
+		if(qName.equals(Hop.HOP_TAG)) {
+			fireEvent(hop);
+			hop = null;
 		}
 	}
 
