@@ -138,4 +138,8 @@ public interface INMapRunHandler {
 	
 	public Cpe createCpe( Attributes attributes ) ;
 	
+	public Trace createTrace( Attributes attributes ) ;
+
+	public Hop createHop( Attributes attributes ) ;
+
 }
