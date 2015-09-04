@@ -294,6 +294,21 @@ public class NMapRunHandlerImpl implements INMapRunHandler {
 		return cpe ;
 	}
 	
+	public Trace createTrace(Attributes attributes) {
+		Trace trace = new Trace() ;
+		trace.setPort( Long.parseLong(attributes.getValue(Trace.PORT_ATTR)));
+		trace.setProtocol(attributes.getValue(Trace.PORTOCOL_ATTR));
+		return trace ;
+	}
+	
+	public Hop createHop(Attributes attributes) {
+		Hop hop = new Hop() ;
+		
+		hop.setTtl(Integer.parseInt(attributes.getValue(Hop.TTL_ATTR)));
+		hop.setIpaddr(attributes.getValue(Hop.IPADDR_ATTR));
+		hop.setRtt(Float.parseFloat(attributes.getValue(Hop.RTT_ATTR)));;
+		return hop ;
+	}
 	
 
 }
