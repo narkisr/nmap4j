@@ -6,4 +6,5 @@ before_install:
     - sudo apt-get install -y nmap
     - sudo ln -s /usr/bin/nmap /usr/local/bin/nmap
 script:
-  - sudo /usr/local/bin/mvn clean install
+  - which mvn
+  - sudo /usr/local/maven/bin/mvn clean install
