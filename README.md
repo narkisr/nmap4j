@@ -6,7 +6,7 @@ A Java nmap wrapper
 
 # Note
 
-This is a fork of [sourceforge](https://sourceforge.net/projects/nmap4j/?source=directory) repo.
+This is a fork of [sourceforge](https://sourceforge.net/projects/nmap4j/?source=directory) repo, please check the original author work.
 
 # License
 
