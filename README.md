@@ -1,5 +1,5 @@
 # Intro
-A Java nmap wrapper, this is a mirror of [sourceforge](http://sourceforge.net/apps/mediawiki/nmap4j/index.php?title=Main_Page#Nmap4j)  repo.
+A Java nmap wrapper, this is a mirror of [sourceforge](https://sourceforge.net/projects/nmap4j/?source=directory)  repo.
 
 Note that I (narkisr) am not the original author (I just like github better then source forge), please check the sourceforge page and its author.
 
