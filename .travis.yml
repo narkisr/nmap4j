@@ -5,4 +5,5 @@ before_install:
     - sudo apt-get -qq update
     - sudo apt-get install -y nmap
     - sudo ln -s /usr/bin/nmap /usr/local/bin/nmap
-
+script:
+  - sudo mvn clean install
