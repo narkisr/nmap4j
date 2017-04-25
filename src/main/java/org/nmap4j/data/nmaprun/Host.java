@@ -47,6 +47,7 @@ import org.nmap4j.data.host.TcpSequence;
 import org.nmap4j.data.host.TcpTsSequence;
 import org.nmap4j.data.host.Times;
 import org.nmap4j.data.host.Uptime;
+import org.nmap4j.data.host.trace.Trace;
 
 
 public class Host {
@@ -70,7 +71,15 @@ public class Host {
 	private TcpTsSequence tcpTsSequence;
 	private Times times ;
 	private Hostnames hostnames ;
-	
+
+	private Trace trace;
+	public Trace getTrace() {
+		return trace;
+	}
+
+	public void setTrace(Trace trace) {
+		this.trace = trace;
+	}
 	public Host() {
 		addresses = new ArrayList<Address>() ;
 	}
