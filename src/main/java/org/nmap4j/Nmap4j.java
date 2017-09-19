@@ -35,7 +35,7 @@ import org.nmap4j.parser.OnePassParser;
  * @author jsvede
  *
  */
-public class Nmap4j {
+public class Nmap4j implements INmap4j {
 	
 	private NMapProperties nmapProperties ;
 	private ArgumentProperties flags ;

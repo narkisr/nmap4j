@@ -66,9 +66,6 @@ public class NMapProperties {
   private final String SHARE = "share" ;
   private final String COMMAND = "nmap" ;
   
-  private String sudoUser ;
-  private String sudoUserPassword ;
-   
   /**
    * Constructs an instance of NMapProperties and looks in the environment
    * properties for NMAP_HOME.  If it is not found, the path is initialized
