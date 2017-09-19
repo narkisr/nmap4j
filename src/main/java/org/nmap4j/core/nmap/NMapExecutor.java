@@ -40,6 +40,8 @@ import java.io.IOException ;
 import java.io.InputStream ;
 import java.io.InputStreamReader ;
 import java.io.OutputStream ;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 import org.nmap4j.core.flags.ArgumentProperties ;
 
@@ -126,12 +128,15 @@ public class NMapExecutor {
             results.setExecutedCommand( command.toString() ) ;
             Process process = Runtime.getRuntime().exec( command.toString() ) ;
 
-            results.setErrors( convertStream( process.getErrorStream() ) ) ;
-            results.setOutput( convertStream( process.getInputStream() ) ) ;
+            CompletableFuture<String> errorPromise = convertStream( process.getErrorStream() ) ;
+            CompletableFuture<String> outputPromise = convertStream( process.getInputStream() );
+            
+            results.setOutput(outputPromise.get()) ;
+            results.setErrors(errorPromise.get()) ;
 
-        } catch ( IOException e ) {
+        } catch ( IOException | InterruptedException | ExecutionException e ) {
             throw new NMapExecutionException( e.getMessage(), e ) ;
-        }
+		}
 
         return results ;
     }
@@ -141,19 +146,28 @@ public class NMapExecutor {
      * executing NMap are converted and later stored in the ExecutionResults.
      * 
      * @param is
-     * @return
+     * @return promise of converted String
      * @throws IOException
      */
-    private String convertStream( InputStream is ) throws IOException {
-        String output ;
-        StringBuffer outputBuffer = new StringBuffer() ;
-        BufferedReader streamReader = new BufferedReader(
-                new InputStreamReader( is ) ) ;
-        while ( ( output = streamReader.readLine() ) != null ) {
-            outputBuffer.append( output ) ;
-            outputBuffer.append( "\n" ) ;
-        }
-        return outputBuffer.toString() ;
+    private CompletableFuture<String> convertStream( InputStream is ) throws IOException {
+    	CompletableFuture<String> promise = CompletableFuture.supplyAsync(() -> {
+            String output ;
+            StringBuffer outputBuffer = new StringBuffer() ;
+            BufferedReader streamReader = new BufferedReader(
+                    new InputStreamReader( is ) ) ;
+            try {
+				while ( ( output = streamReader.readLine() ) != null ) {
+				    outputBuffer.append( output ) ;
+				    outputBuffer.append( "\n" ) ;
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+            
+            return outputBuffer.toString();
+        });
+        
+        return promise;
     }
 
     public String toString() {
