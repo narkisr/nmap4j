@@ -18,8 +18,8 @@ import org.nmap4j.parser.OnePassParser;
  * Here is an example of how to use this class:
  * <code>
  * Nmap4j nmap4j = new Nmap4j( "/usr/local" ) ;
- * nmap4j.includeHost( "192.168.1.1-255" ) ;
- * nmap4j.excludeHost( "192.168.1.110" ) ;
+ * nmap4j.includeHosts( "192.168.1.1-255" ) ;
+ * nmap4j.excludeHosts( "192.168.1.110" ) ;
  * nmap4j.addFlags( "-T3 -oX - -O -sV" ) ;
  * nmap4j.execute() ; 
  * if( !nma4j.hasError() ) {
