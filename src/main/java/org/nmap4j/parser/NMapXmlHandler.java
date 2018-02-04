@@ -40,21 +40,13 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.nmap4j.data.NMapRun;
-import org.nmap4j.data.host.Address;
-import org.nmap4j.data.host.Cpe;
-import org.nmap4j.data.host.Distance;
-import org.nmap4j.data.host.Hostnames;
-import org.nmap4j.data.host.Os;
-import org.nmap4j.data.host.Ports;
-import org.nmap4j.data.host.Status;
-import org.nmap4j.data.host.TcpSequence;
-import org.nmap4j.data.host.TcpTsSequence;
-import org.nmap4j.data.host.Times;
-import org.nmap4j.data.host.Uptime;
+import org.nmap4j.data.host.*;
 import org.nmap4j.data.host.os.OsClass;
 import org.nmap4j.data.host.os.OsMatch;
 import org.nmap4j.data.host.os.PortUsed;
 import org.nmap4j.data.host.ports.Port;
+import org.nmap4j.data.host.scripts.HostScript;
+import org.nmap4j.data.host.scripts.Script;
 import org.nmap4j.data.host.trace.Hop;
 import org.nmap4j.data.host.trace.Trace;
 import org.nmap4j.data.nmaprun.Debugging;
@@ -121,11 +113,14 @@ public class NMapXmlHandler extends DefaultHandler {
 	private Cpe cpe ;
 	private Trace trace;
 	private Hop hop;
-	
+	private HostScript hostScript;
+	private Script script;
+	private String elemkey;
+
 	private boolean isCpeData = false ;
 	
 	private String previousQName ;
-    
+
 	public NMapXmlHandler( INMapRunHandler handler ) {
 		listeners = new ArrayList<NMap4JParserEventListener>() ;
 		runHandler = handler ;
@@ -158,6 +153,8 @@ public class NMapXmlHandler extends DefaultHandler {
 	@Override
 	public void startDocument() throws SAXException {
 		parseStartTime = System.currentTimeMillis() ;
+	}
+	private void noop() {
 	}
 
 	@Override
@@ -280,11 +277,26 @@ public class NMapXmlHandler extends DefaultHandler {
 			hop = runHandler.createHop(attributes);
 			trace.addHop(hop);
 		}
+		if(qName.equals(HostScript.TAG)){
+			this.hostScript=runHandler.createHostScript(attributes);
+			this.host.setHostScript(this.hostScript);
+		}
+		if(qName.equals(Script.TAG)){
+			this.script=runHandler.createScript(attributes);
+			this.hostScript.addScript(this.script);
+		}
+		if(qName.equals(Script.ELEMTAG)){
+			if(this.elemkey!=null){
+				throw new RuntimeException();
+			}
+			String elemKey = attributes.getValue("key");
+			this.elemkey=elemKey;
+		}
 		// set the previousQName for comparison to later elements
 		previousQName = qName ;
 	}
-	
-	
+
+
 
 	@Override
 	public void characters(char[] ch, int start, int length)
@@ -293,6 +305,9 @@ public class NMapXmlHandler extends DefaultHandler {
 			String cpeText = new String( ch, start, length ) ;
 			cpe.setCpeData(cpeText) ;
 			isCpeData = false ;
+		}
+		if(elemkey!=null){
+			this.script.addElem(this.elemkey,new String( ch, start, length ));
 		}
 	}
 
@@ -411,6 +426,18 @@ public class NMapXmlHandler extends DefaultHandler {
 			fireEvent(hop);
 			hop = null;
 		}
+		if(qName.equals(HostScript.TAG)){
+			fireEvent(hostScript);
+			hostScript=null;
+		}
+		if(qName.equals(Script.TAG)){
+			fireEvent(script);
+			script=null;
+		}
+		if(qName.equals(Script.ELEMTAG)){
+			elemkey=null;
+		}
+
 	}
 
 	@Override
