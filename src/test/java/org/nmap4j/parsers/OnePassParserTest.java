@@ -12,6 +12,8 @@ import org.nmap4j.core.scans.ParameterValidationFailureException;
 import org.nmap4j.data.NMapRun;
 import org.nmap4j.data.host.Cpe;
 import org.nmap4j.data.host.os.OsClass;
+import org.nmap4j.data.host.scripts.HostScript;
+import org.nmap4j.data.host.scripts.Script;
 import org.nmap4j.data.nmaprun.Host;
 import org.nmap4j.parser.OnePassParser;
 import org.nmap4j.parser.events.NMap4JParserEventListener;
@@ -22,12 +24,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 import static org.junit.Assert.fail;
 
 public class OnePassParserTest implements IConstants {
 
     String fileName = "nmap-xml/ms-vscan.xml";
+    String smbFileName = "nmap-xml/SMB-os-discovery_CPE.xml";
     int count = 0;
 
 
@@ -56,7 +60,6 @@ public class OnePassParserTest implements IConstants {
     @Test
     public void testOnePassWithSMBOutput() {
 
-        String smbFileName = "nmap-xml/SMB-os-discovery_CPE.xml";
 
         OnePassParser opp = new OnePassParser();
 
@@ -229,11 +232,27 @@ public class OnePassParserTest implements IConstants {
     }
 
     @Test
-    public void test1() {
-        OnePassParser p = new OnePassParser();
-        URL testFileUrl = getClass().getClassLoader().getResource("nmap-xml/unhost.xml");
+    public void testHostScript() {
+        OnePassParser onePassParser = new OnePassParser();
+        URL testFileUrl = getClass().getClassLoader().getResource(smbFileName);
         String testFilePath = testFileUrl.getFile();
-        NMapRun nmap = p.parse(testFilePath, p.FILE_NAME_INPUT);
+        NMapRun nmap = onePassParser.parse(testFilePath, onePassParser.FILE_NAME_INPUT);
+        for (Host host : nmap.getHosts()) {
+            HostScript hostScripts = host.getHostScripts();
+            if (hostScripts == null) {
+                continue;
+            }
+            Script script = hostScripts.getScript("smb-os-discovery");
+            LinkedHashMap<String, String> elems = script.getElems();
+            if (elems.size() == 0) {
+                continue;
+            }
+            String server = script.getElem("os");
+            if (!server.equals("Windows 7 Professional 7600")) {
+                throw new RuntimeException();
+            }
+            System.out.println("");
+        }
         System.out.println("");
     }
 }

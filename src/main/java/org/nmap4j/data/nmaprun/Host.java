@@ -163,6 +163,9 @@ public class Host {
 	public void setHostScript(HostScript hostScript) {
 		this.hostScript=hostScript;
 	}
+	public HostScript getHostScripts() {
+		return this.hostScript;
+	}
 	@Override
 	public String toString() {
 		return "Host [endTime=" + endTime + ", startTime=" + startTime + "]";

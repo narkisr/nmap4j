@@ -115,6 +115,7 @@ public class NMapXmlHandler extends DefaultHandler {
 	private Hop hop;
 	private HostScript hostScript;
 	private Script script;
+	private String elemkey;
 
 	private boolean isCpeData = false ;
 	
@@ -284,6 +285,13 @@ public class NMapXmlHandler extends DefaultHandler {
 			this.script=runHandler.createScript(attributes);
 			this.hostScript.addScript(this.script);
 		}
+		if(qName.equals(Script.ELEMTAG)){
+			if(this.elemkey!=null){
+				throw new RuntimeException();
+			}
+			String elemKey = attributes.getValue("key");
+			this.elemkey=elemKey;
+		}
 		// set the previousQName for comparison to later elements
 		previousQName = qName ;
 	}
@@ -297,6 +305,9 @@ public class NMapXmlHandler extends DefaultHandler {
 			String cpeText = new String( ch, start, length ) ;
 			cpe.setCpeData(cpeText) ;
 			isCpeData = false ;
+		}
+		if(elemkey!=null){
+			this.script.addElem(this.elemkey,new String( ch, start, length ));
 		}
 	}
 
@@ -422,6 +433,9 @@ public class NMapXmlHandler extends DefaultHandler {
 		if(qName.equals(Script.TAG)){
 			fireEvent(script);
 			script=null;
+		}
+		if(qName.equals(Script.ELEMTAG)){
+			elemkey=null;
 		}
 
 	}

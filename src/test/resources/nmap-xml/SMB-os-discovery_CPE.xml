@@ -341,7 +341,27 @@
 		<ipidsequence class="All zeros" values="0,0,0,0,0,0"/>
 		<tcptssequence class="100HZ" values="1BF22FCB,1BF22FD4,1BF22FDE,1BF22FE8,1BF22FF2,1BF22FFC"/>
 		<hostscript>
-			<script id="smb-os-discovery" output="&#10;  OS: EPSON Storage Server (NQ 4.32)&#10;  NetBIOS computer name: &#10;  Workgroup: &#10;  System time: 2007-02-04 07:27:46 UTC+0&#10;"/>
+			<script id="smb-os-discovery"
+					output="&#xa;  OS: Windows 7 Professional 7600 (Windows 7 Professional 6.1)&#xa;  OS CPE: cpe:/o:microsoft:windows_7::-:professional&#xa;  Computer name: HOSTNAME01-Pc&#xa;  NetBIOS computer name: HOSTNAME01-PC&#xa;  Domain name: domain.local&#xa;  Forest name: domain.local&#xa;  FQDN: Hostname01-Pc.domain.local&#xa;  System time: 2018-02-03T10:54:19+01:00&#xa;">
+				<elem key="os">Windows 7 Professional 7600</elem>
+				<elem key="lanmanager">Windows 7 Professional 6.1</elem>
+				<elem key="server">HOSTNAME01-PC\x00</elem>
+				<elem key="date">2018-02-03T10:54:19+01:00</elem>
+				<elem key="fqdn">Hostname01-Pc.domain.local</elem>
+				<elem key="domain_dns">domain.local</elem>
+				<elem key="forest_dns">domain.local</elem>
+				<elem key="workgroup">DOMAIN\x00</elem>
+				<elem key="cpe">cpe:/o:microsoft:windows_7::-:professional</elem>
+			</script>
+			<script id="smb-security-mode"
+					output="&#xa;  account_used: guest&#xa;  authentication_level: user&#xa;  challenge_response: supported&#xa;  message_signing: disabled (dangerous, but default)">
+				<elem key="account_used">guest</elem>
+				<elem key="authentication_level">user</elem>
+				<elem key="challenge_response">supported</elem>
+				<elem key="message_signing">disabled</elem>
+			</script>
+			<script id="smbv2-enabled" output="Server supports SMBv2 protocol">true</script>
+
 		</hostscript>
 		<times srtt="8455" rttvar="10001" to="100000"/>
 	</host>
