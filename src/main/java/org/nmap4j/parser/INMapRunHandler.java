@@ -35,23 +35,14 @@
 package org.nmap4j.parser;
 
 import org.nmap4j.data.NMapRun;
-import org.nmap4j.data.host.Address;
-import org.nmap4j.data.host.Cpe;
-import org.nmap4j.data.host.Distance;
-import org.nmap4j.data.host.Hostnames;
-import org.nmap4j.data.host.IpIdSequence;
-import org.nmap4j.data.host.Os;
-import org.nmap4j.data.host.Ports;
-import org.nmap4j.data.host.Status;
-import org.nmap4j.data.host.TcpSequence;
-import org.nmap4j.data.host.TcpTsSequence;
-import org.nmap4j.data.host.Times;
-import org.nmap4j.data.host.Uptime;
+import org.nmap4j.data.host.*;
 import org.nmap4j.data.host.os.OsClass;
 import org.nmap4j.data.host.os.OsMatch;
 import org.nmap4j.data.host.os.PortUsed;
 import org.nmap4j.data.host.ports.ExtraPorts;
 import org.nmap4j.data.host.ports.Port;
+import org.nmap4j.data.host.scripts.HostScript;
+import org.nmap4j.data.host.scripts.Script;
 import org.nmap4j.data.host.trace.Hop;
 import org.nmap4j.data.host.trace.Trace;
 import org.nmap4j.data.nmaprun.Debugging;
@@ -144,4 +135,7 @@ public interface INMapRunHandler {
 
 	public Hop createHop( Attributes attributes ) ;
 
+	HostScript createHostScript(Attributes attributes);
+
+	Script createScript(Attributes attributes);
 }

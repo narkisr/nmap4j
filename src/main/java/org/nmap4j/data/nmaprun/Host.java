@@ -36,17 +36,8 @@ package org.nmap4j.data.nmaprun;
 
 import java.util.ArrayList;
 
-import org.nmap4j.data.host.Address;
-import org.nmap4j.data.host.Distance;
-import org.nmap4j.data.host.Hostnames;
-import org.nmap4j.data.host.IpIdSequence;
-import org.nmap4j.data.host.Os;
-import org.nmap4j.data.host.Ports;
-import org.nmap4j.data.host.Status;
-import org.nmap4j.data.host.TcpSequence;
-import org.nmap4j.data.host.TcpTsSequence;
-import org.nmap4j.data.host.Times;
-import org.nmap4j.data.host.Uptime;
+import org.nmap4j.data.host.*;
+import org.nmap4j.data.host.scripts.HostScript;
 import org.nmap4j.data.host.trace.Trace;
 
 
@@ -73,6 +64,8 @@ public class Host {
 	private Hostnames hostnames ;
 
 	private Trace trace;
+	private HostScript hostScript;
+
 	public Trace getTrace() {
 		return trace;
 	}
@@ -167,12 +160,14 @@ public class Host {
 	public void setTimes(Times times) {
 		this.times = times;
 	}
+	public void setHostScript(HostScript hostScript) {
+		this.hostScript=hostScript;
+	}
 	@Override
 	public String toString() {
 		return "Host [endTime=" + endTime + ", startTime=" + startTime + "]";
 	}
-	
-	
-	
-	
+
+
+
 }
