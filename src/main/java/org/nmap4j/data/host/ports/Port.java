@@ -77,7 +77,7 @@ public class Port {
 	}
 	@Override
 	public String toString() {
-		return "Port [portId=" + portId + ", protocol=" + protocol + "]";
+		return "Port [portId=" + portId + ", protocol=" + protocol + ",service=" + service + "]";
 	}
 	
 }
