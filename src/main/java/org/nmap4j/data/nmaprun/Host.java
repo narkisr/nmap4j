@@ -70,7 +70,7 @@ public class Host {
 	private IpIdSequence ipIdSequence;
 	private TcpTsSequence tcpTsSequence;
 	private Times times ;
-	private Hostnames hostnames ;
+	private ArrayList<Hostname> hostnames ;
 
 	private Trace trace;
 	public Trace getTrace() {
@@ -84,11 +84,17 @@ public class Host {
 		addresses = new ArrayList<Address>() ;
 	}
 	
-	public Hostnames getHostnames() {
+	public ArrayList<Hostname> getHostnames() {
 		return hostnames;
 	}
-	public void setHostnames(Hostnames hostnames) {
+	public void setHostnames(ArrayList<Hostname> hostnames) {
 		this.hostnames = hostnames;
+	}
+	public void addHostname(Hostname hostname){
+		if(this.hostnames == null){
+			this.hostnames = new ArrayList<>();
+		}
+		this.hostnames.add(hostname);
 	}
 	public long getStartTime() {
 		return startTime;
