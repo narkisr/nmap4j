@@ -192,12 +192,11 @@ public class NMapXmlHandler extends DefaultHandler {
 			host.addAddress( address ) ;
 		}
 		if( qName.equals( Hostnames.HOSTNAMES_TAG ) ) {
-			hostnames = runHandler.createHostnames( attributes ) ;
-			host.setHostnames( hostnames ) ;
+			host.setHostnames( new ArrayList<>() ) ;
 		}
 		if( qName.equals( Hostname.HOSTNAME_TAG ) ) {
 			hostname = runHandler.createHostname( attributes ) ;
-			hostnames.setHostname( hostname ) ;
+			host.addHostname(hostname);
 		}
 		if( qName.equals( Ports.PORTS_TAG ) ) {
 			ports = runHandler.createPorts(attributes ) ;
