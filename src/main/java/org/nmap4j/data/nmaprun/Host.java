@@ -48,6 +48,7 @@ import org.nmap4j.data.host.TcpTsSequence;
 import org.nmap4j.data.host.Times;
 import org.nmap4j.data.host.Uptime;
 import org.nmap4j.data.host.trace.Trace;
+import org.nmap4j.data.nmaprun.hostnames.Hostname;
 
 
 public class Host {
