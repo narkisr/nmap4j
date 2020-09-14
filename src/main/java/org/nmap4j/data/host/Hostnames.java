@@ -36,18 +36,27 @@ package org.nmap4j.data.host;
 
 import org.nmap4j.data.nmaprun.hostnames.Hostname;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Hostnames {
 	
 	public final static String HOSTNAMES_TAG = "hostnames" ;
 	
-	private Hostname hostname ;
+	private List<Hostname> hostnames = new ArrayList<>();
 
-	public Hostname getHostname() {
-		return hostname;
+	public List<Hostname> getHostnames() {
+		return hostnames;
 	}
 
-	public void setHostname(Hostname hostname) {
-		this.hostname = hostname;
+	public void setHostnames(List<Hostname> hostnames) {
+		this.hostnames = hostnames;
+	}
+
+	public void addHostname( Hostname hostname ) {
+		if( !hostnames.contains( hostname ) ) {
+			hostnames.add( hostname ) ;
+		}
 	}
 
 	@Override

@@ -125,7 +125,7 @@ public class NMapXmlHandler extends DefaultHandler {
 	private boolean isCpeData = false ;
 	
 	private String previousQName ;
-    
+
 	public NMapXmlHandler( INMapRunHandler handler ) {
 		listeners = new ArrayList<NMap4JParserEventListener>() ;
 		runHandler = handler ;
@@ -197,7 +197,7 @@ public class NMapXmlHandler extends DefaultHandler {
 		}
 		if( qName.equals( Hostname.HOSTNAME_TAG ) ) {
 			hostname = runHandler.createHostname( attributes ) ;
-			hostnames.setHostname( hostname ) ;
+			hostnames.addHostname(hostname); ;
 		}
 		if( qName.equals( Ports.PORTS_TAG ) ) {
 			ports = runHandler.createPorts(attributes ) ;
@@ -328,7 +328,7 @@ public class NMapXmlHandler extends DefaultHandler {
 			address = null ;
 		}
 		if( qName.equals( Hostname.HOSTNAME_TAG ) ) {
-			fireEvent( hostname ) ;
+			fireEvent(hostname) ;
 			hostname = null ;
 		}
 		if( qName.equals( Hostnames.HOSTNAMES_TAG ) ) {
