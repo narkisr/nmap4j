@@ -298,8 +298,10 @@ public class NMapRunHandlerImpl implements INMapRunHandler {
 	
 	public Trace createTrace(Attributes attributes) {
 		Trace trace = new Trace() ;
-		trace.setPort( Long.parseLong(attributes.getValue(Trace.PORT_ATTR)));
-		trace.setProtocol(attributes.getValue(Trace.PORTOCOL_ATTR));
+        if (attributes.getValue(Trace.PORT_ATTR) != null) {
+            trace.setPort(Long.parseLong(attributes.getValue(Trace.PORT_ATTR)));
+            trace.setProtocol(attributes.getValue(Trace.PORTOCOL_ATTR));
+        }
 		return trace ;
 	}
 	
@@ -308,7 +310,7 @@ public class NMapRunHandlerImpl implements INMapRunHandler {
 		
 		hop.setTtl(Integer.parseInt(attributes.getValue(Hop.TTL_ATTR)));
 		hop.setIpaddr(attributes.getValue(Hop.IPADDR_ATTR));
-		hop.setRtt(Float.parseFloat(attributes.getValue(Hop.RTT_ATTR)));;
+		hop.setRtt(Float.parseFloat(attributes.getValue(Hop.RTT_ATTR)));
 		return hop ;
 	}
 
