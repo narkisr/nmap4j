@@ -1,5 +1,6 @@
 package org.nmap4j.parsers;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
 import java.io.IOException;
@@ -158,18 +159,13 @@ public class OnePassParserTest implements IConstants {
 			
 			OnePassParser opp = new OnePassParser() ;
 			NMapRun nmapRun = opp.parse(results.getOutput(), OnePassParser.STRING_INPUT ) ;
-			
+
+			assertNotNull("Are you root?", nmapRun);
 			String output = nmapRun.getHosts().get(0).getPorts().getPorts().get(0).getState().getState() ;
 			
 			System.out.println( "Port state: " + output ) ;
 			
-		} catch (ParameterValidationFailureException e) {
-			e.printStackTrace();
-			fail() ;
-		} catch (NMapExecutionException e) {
-			e.printStackTrace();
-			fail() ;
-		} catch (NMapInitializationException e) {
+		} catch (ParameterValidationFailureException | NMapExecutionException | NMapInitializationException e) {
 			e.printStackTrace();
 			fail() ;
 		}
